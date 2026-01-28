@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: SECRETS   
+    environment: SECRETS
 
     steps:
       - uses: actions/checkout@v4
@@ -20,10 +20,6 @@ jobs:
 
       - name: "Install Dependencies"
         run: npm install
-
-    #   - name: "Run Tests"
-    #     env:
-    #     # run: timeout 5s node src/index.js
 
       - name: "Upload backend artifact"
         uses: actions/upload-artifact@v4

@@ -10,7 +10,7 @@ jobs:
   deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    environment: production  
+    environment: production
 
     steps:
       - name: "Download artifact from CI"
