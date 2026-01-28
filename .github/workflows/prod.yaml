@@ -1,20 +1,25 @@
-name: "cd - prod"
-on:
-    workflow_run:
-        workflows: ["CI - Test"]
-        types:
-            - completed
-jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        steps:
-            - name: "Download artifact from test workflow"
-              uses: actions/download-artifact@v4
-              with:
-                  name: backend-artifact
+name: "cd-prod"
 
-            - name: "Deploy to Production Server"
-              run: |
-                  echo "Deploying to production server..."
-                  ls
+on:
+  workflow_run:
+    workflows: ["CI - Test"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment: production   # (optional but recommended)
+
+    steps:
+      - name: "Download artifact from CI"
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-artifact
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: "Deploy to Production Server"
+        run: |
+          echo "Deploying to production server..."
+          ls
