@@ -24,4 +24,4 @@ jobs:
         run: echo "Tests passed successfully"
 
       - name: "Build project"
-        run: node index.js
+        run: node src/index.js
