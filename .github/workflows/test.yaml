@@ -20,5 +20,5 @@ jobs:
       - name : "Run tets"
         run: echo "Tests passed successfully"
       - name: "Build project"
-        run : npm run build
+        run : node index.js
     
