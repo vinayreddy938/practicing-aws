@@ -29,3 +29,8 @@ jobs:
 
       - name: "Print Secret (masked)"
         run: echo "${{ secrets.PORT }}"
+      - name: "upload artifact"
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend-artifact
+          path: src
