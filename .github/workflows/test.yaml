@@ -23,5 +23,5 @@ jobs:
       - name: "Run tests"
         run: echo "Tests passed successfully"
 
-      - name: "Build project"
-        run: node src/index.js
+      - name : "Build project"
+        run: timeout 5s node src/index.js
