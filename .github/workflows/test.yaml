@@ -23,7 +23,6 @@ jobs:
 
     #   - name: "Run Tests"
     #     env:
-    #       PORT: ${{ secrets.PORT }}
     #     # run: timeout 5s node src/index.js
 
       - name: "Upload backend artifact"
