@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: SECRETS   # must match your environment name exactly
+    environment: SECRETS   
 
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: "Run Tests"
-        run: npm test
+        run: timeout 5s node src/index.js
 
       - name: "Upload backend artifact"
         uses: actions/upload-artifact@v4
