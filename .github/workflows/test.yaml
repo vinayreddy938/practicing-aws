@@ -23,7 +23,7 @@ jobs:
 
       - name: "Run App (temporary)"
         env:
-            PORT: ${{ secrets.PORT }}
+          PORT: ${{ secrets.PORT }}
         run: timeout -s KILL 5s node src/index.js
 
       - name: "Print Secret (masked)"
