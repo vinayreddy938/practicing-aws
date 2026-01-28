@@ -1,13 +1,33 @@
-name: "Test Workflow"
+name: "CI - Test"
 
 on:
   push:
     branches:
-      - feature
+      - test
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: SECRETS   
+
     steps:
-      - name: "checking github workflow"
-        run: echo "github workflow is running successfully"
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: "Install Dependencies"
+        run: npm install
+
+    #   - name: "Run Tests"
+    #     env:
+    #       PORT: ${{ secrets.PORT }}
+    #     # run: timeout 5s node src/index.js
+
+      - name: "Upload backend artifact"
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-artifact
+          path: src/
